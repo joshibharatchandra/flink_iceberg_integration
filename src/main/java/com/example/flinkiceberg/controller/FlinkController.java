@@ -15,7 +15,7 @@ public class FlinkController {
     @Autowired
     private  final FlinkIcebergService flinkIcebergService;
 
-    @Autowired // Dependency injection using constructor-based injection
+    @Autowired
     public FlinkController(FlinkIcebergService flinkIcebergService) {
         this.flinkIcebergService = flinkIcebergService;
     }

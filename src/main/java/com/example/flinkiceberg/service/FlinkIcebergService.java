@@ -21,14 +21,14 @@ public class FlinkIcebergService {
     }
 
     public void executeFlinkJob() throws Exception {
-        // Set Google Cloud credentials path
+        // Set Google Cloud credentials path dinamically here
         System.setProperty("GOOGLE_APPLICATION_CREDENTIALS", googleCredentialsPath);
 
         // Initialize Flink execution environment
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         StreamTableEnvironment tableEnv = StreamTableEnvironment.create(env);
 
-        // Prepare sample data
+        // Now we will Prepare sample data
         DataStream<MyDTO> dataStream = env.fromElements(
                 new MyDTO(1, "Bharat", "20240101"),
                 new MyDTO(2, "Manish", "20240102"),
@@ -38,7 +38,7 @@ public class FlinkIcebergService {
         // Register the DataStream as a temporary table
         tableEnv.createTemporaryView("myDTO", dataStream);
 
-        // Create Iceberg table using properties
+        // Here we Create Iceberg table using properties
         String createTableQuery = String.format(
                 "CREATE TABLE IF NOT EXISTS %s.%s.%s (\n" +
                         "  id INT, \n" +
@@ -60,7 +60,7 @@ public class FlinkIcebergService {
 
         tableEnv.executeSql(createTableQuery);
 
-        // Insert data into the Iceberg table
+        // Here we Insert data into the Iceberg table
         String insertQuery = String.format(
                 "INSERT INTO %s.%s.%s SELECT * FROM myDTO",
                 icebergProperties.getCatalogName(),

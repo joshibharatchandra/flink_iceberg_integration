@@ -12,7 +12,7 @@ public class IcebergProperties {
     private String schemaName;
     private String tableName;
 
-    // Getters and Setters
+
     public String getCatalogName() {
         return catalogName;
     }
