@@ -13,13 +13,13 @@ public class FlinkController {
 
 
     @Autowired
-    private  final FlinkIcebergService flinkIcebergService;
+    private  FlinkIcebergService flinkIcebergService;
 
-    @Autowired
+    /*@Autowired
     public FlinkController(FlinkIcebergService flinkIcebergService) {
         this.flinkIcebergService = flinkIcebergService;
     }
-
+*/
 
 
 
